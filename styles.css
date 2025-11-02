@@ -1,6 +1,6 @@
 /* Base styles */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   font-size: 18px;
   margin: 0;
@@ -49,20 +49,13 @@ nav a:hover {
 /* Hero Section */
 .hero {
   background-color: #E2E8F0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
+  text-align: center;
   padding: 80px 10%;
 }
 
-.hero img {
-  width: 45%;
-  border-radius: 10px;
-}
-
 .hero-text {
-  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .hero-text h2 {
@@ -72,6 +65,12 @@ nav a:hover {
 
 .hero-text p {
   line-height: 1.6;
+}
+
+.hero img {
+  display: block;
+  margin: 30px auto 0;
+  width: 300px;
 }
 
 /* Learn About Section */
@@ -97,9 +96,9 @@ nav a:hover {
 }
 
 .card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   border-radius: 5px;
   margin-bottom: 15px;
 }
@@ -160,6 +159,10 @@ nav a:hover {
   align-items: center;
   gap: 25px;
   margin-bottom: 40px;
+}
+
+.story:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
 .story img {
@@ -231,4 +234,32 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .newsletter form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .newsletter input[type="email"],
+  .newsletter button {
+    width: 100%;
+  }
 }
