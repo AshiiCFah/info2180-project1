@@ -1,43 +1,53 @@
-/* Base styles */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  font-size: 18px;
+/* Reset and global styles */
+* {
   margin: 0;
   padding: 0;
-  color: #1a202c;
+  box-sizing: border-box;
 }
 
-section {
-  padding: 60px 10%;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
 }
 
-/* Header */
+/* Base container */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: block; /* restored from flex */
+}
+
+/* HEADER */
 header {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 10%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eee;
 }
 
 header h1 {
-  font-size: 24px;
-  margin: 0;
+  float: left;
+  font-size: 18px;
+  color: #333;
+}
+
+nav {
+  float: right;
 }
 
 nav ul {
-  list-style-type: none;
+  list-style: none;
   display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
+  gap: 1.5rem;
 }
 
 nav a {
   text-decoration: none;
   color: #6b7280;
+  font-weight: 500;
   font-size: 18px;
   transition: color 0.3s ease;
 }
@@ -46,233 +56,285 @@ nav a:hover {
   color: #5A67D8;
 }
 
-/* Hero Section */
-.hero {
-  background-color: #E2E8F0;
-  text-align: center;
-  padding: 60px 10%;
-}
-
-.hero-text {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.hero-text h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.hero-text p {
-  line-height: 1.6;
-}
-
-.hero img {
-  width: 250px;
-  margin-bottom: 20px;
+/* Clearfix */
+header::after {
+  content: "";
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  clear: both;
 }
 
-/* Learn About Section */
+/* HERO SECTION */
+.overview-hero {
+  background-color: #E2E8F0;
+  padding: 4rem 0;
+}
+
+.overview-hero .container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.overview-hero-image img {
+  width: 250px;
+  height: auto;
+}
+
+.overview-hero-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.overview-hero-text p {
+  color: #555;
+  max-width: 500px;
+}
+
+/* LEARN ABOUT */
 .learn-about {
-  background-color: #f9fafb;
-  padding: 60px 10%;
+  padding: 4rem 0;
+  text-align: left;
 }
 
 .learn-about h2 {
-  text-align: center;
-  font-size: 24px;
   color: #48BB78;
-  margin-bottom: 40px;
+  font-size: 24px;
+  margin-bottom: 3rem; /* Tight gap under heading */
 }
 
-.card-grid {
+.learn-about .cards {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Cards grid */
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
+  gap: 1.5rem;
 }
 
 .card {
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   background-color: #fff;
-  padding: 20px;
-  text-align: center;
+  border: 1px solid #E2E8F0;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left;
 }
 
 .card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 15px;
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  object-fit: cover;
 }
 
-.card h3 {
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-body h3 {
   color: #48BB78;
   font-size: 21px;
-  margin-bottom: 10px;
+  margin-bottom: 0.8rem;
 }
 
-/* COVID-19 Testing Section */
-.covid {
+.card-body p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* COVID-19 TESTING SECTION */
+.testing {
   background-color: #4A5568;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 10%;
-  gap: 30px;
+  color: #fff;
+  padding: 3rem 0;
 }
 
-.covid-text {
+.testing .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 7rem;
+  flex-wrap: wrap;
+}
+
+.testing-desciption {
   flex: 1;
+  max-width: 600px;
 }
 
-.covid h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
+.cta {
+  margin-top: 4rem;
 }
 
-.covid a {
+.testing h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.testing p {
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
   background-color: #48BB78;
-  color: white;
-  text-decoration: none;
-  padding: 12px 25px;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
   border-radius: 5px;
-  font-weight: bold;
+  text-decoration: none;
+  font-weight: 600;
   transition: background-color 0.3s ease;
+  text-transform: uppercase;
 }
 
-.covid a:hover {
-  background-color: #3ca268;
+.btn:hover {
+  background-color: #38A169;
 }
 
-/* Recent Stories Section */
-.recent-stories {
-  padding: 60px 10%;
-}
-
-.recent-stories h2 {
-  color: #5A67D8;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.story {
+/* STORIES */
+.stories {
+  padding: 4rem 0;
   display: flex;
-  align-items: center;
-  gap: 25px;
-  margin-bottom: 40px;
+  justify-content: center;
 }
 
-.story:nth-child(even) {
-  flex-direction: row-reverse;
+.stories .container {
+  max-width: 800px;
+  width: 90%;
 }
 
-.story img {
-  width: 150px;
-  height: 150px;
+.stories h2 {
+  color: #5A67D8;
+  margin-bottom: 0rem;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.stories article:first-of-type {
+  margin-top: 0.5rem;
+}
+
+article {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  gap: 1.5rem;
+}
+
+article img {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.story h3 {
+.article-body h3 {
+  font-weight: 600;
   font-size: 18px;
-  margin: 0 0 10px;
+  color: #333;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
 }
 
-.story a {
+.article-body p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.article-body a {
   color: #5A67D8;
   text-decoration: none;
   font-weight: bold;
 }
 
-.story a:hover {
+.article-body a:hover {
   text-decoration: underline;
 }
 
-/* Newsletter Section */
-.newsletter {
-  background-color: #48BB78;
-  color: white;
-  text-align: center;
-  padding: 60px 10%;
+/* Responsive stacking */
+@media (max-width: 600px) {
+  article {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  article img {
+    margin-bottom: 1rem;
+  }
+
+  .article-body {
+    width: 100%;
+  }
 }
 
-.newsletter h2 {
-  margin-bottom: 20px;
+/* NEWSLETTER */
+.newsletter {
+  background-color: #48BB78;
+  color: #fff;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.newsletter h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.newsletter p {
+  line-height: 1.6;
+  max-width: 600px;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto 1.5rem; /* centers and adds space below */
 }
 
 .newsletter form {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .newsletter input[type="email"] {
-  padding: 12px 15px;
-  font-size: 16px;
+  padding: 0.7rem;
   border: none;
   border-radius: 5px;
-  width: 300px;
+  width: 250px;
 }
 
 .newsletter button {
-  background-color: #5A67D8;
+  padding: 0.7rem 1.5rem;
   border: none;
-  color: white;
-  padding: 12px 20px;
+  background-color: #5A67D8;
+  color: #fff;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
+  font-weight: 600;
   transition: background-color 0.3s ease;
 }
 
 .newsletter button:hover {
-  background-color: #4a54c6;
+  background-color: #434190;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
   background-color: #4A5568;
-  color: white;
+  color: #fff;
   text-align: center;
-  padding: 20px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .story {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .newsletter form {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .newsletter input[type="email"],
-  .newsletter button {
-    width: 100%;
-  }
-
-  .covid {
-    flex-direction: column;
-    text-align: center;
-  }
+  padding: 1rem 0;
+  font-size: 0.9rem;
 }
